@@ -138,69 +138,35 @@ public class Main {
                 "Input number, to be interpreted as text"
         );
         int number= Integer.parseInt(input);
+        String[] binary={"0","1"};
+        String[] octal={"0","1","2","3","4","5","6","7","8"};
+        String[] hexadecimal={"0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"};
 
         JOptionPane.showMessageDialog(
                 null,
                 ("Result: "+number+" representation in:"+
-                        "\nBinary:             "+num_to_bin(number)+
-                        "\nOctal:               "+num_to_oct(number)+
-                        "\nHexadecimal: "+num_to_hex(number))
+                        "\nBinary:             "+num_to_base(number, 2, binary)+
+                        "\nOctal:               "+num_to_base(number, 8, octal)+
+                        "\nHexadecimal: "+num_to_base(number, 16, hexadecimal))
         );
     }
 
-    public static String num_to_bin(int number){
-        String temp="";
-        String result="";
-
-        while (number>0){
-            temp=temp+(number%2);
-            number=number/2;
-        };
-        //now reverse string
-        for (int i=temp.length()-1; i>=0;i--){
-            result=result+temp.charAt(i);
-        }
-        return result;
-    }
-
-    public static String num_to_oct(int number){
-        String temp="";
-        String result="";
-
-        while (number>0){
-            temp=temp+(number%8);
-            number=number/8;
-        };
-        //now reverse string
-        for (int i=temp.length()-1; i>=0;i--){
-            result=result+temp.charAt(i);
-        };
-        return result;
-    }
-    public static String num_to_hex(int number){
+    //returns integer in given base, represented by characters in given map
+    public static String num_to_base(int number, int base, String[] representation){
         String temp="";
         String result="";
         String digit="";
 
         while (number>0){
-
-            switch (number%16) {
-                case 10: digit="A"; break;
-                case 11: digit="B"; break;
-                case 12: digit="C"; break;
-                case 13: digit="D"; break;
-                case 14: digit="E"; break;
-                case 15: digit="F"; break;
-                default: digit=""+(number%16); break;
-            };
-            temp=temp+digit;
-            number=number/16;
-        };
+            temp=temp+representation[number%base];
+            number=number/base;
+        }
         //now reverse string
         for (int i=temp.length()-1; i>=0;i--){
             result=result+temp.charAt(i);
-        };
+        }
         return result;
+
     }
 
 
