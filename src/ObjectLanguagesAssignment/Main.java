@@ -68,7 +68,7 @@ public class Main {
              i.compareTo(number)!=1;                        //calculation has to contain i=number as well
              i=i.add(BigInteger.ONE) ){
             result=result.multiply(i);
-        };
+        }
 
         JOptionPane.showMessageDialog(
                 null,
@@ -76,14 +76,40 @@ public class Main {
                 "Whoah ;___;",
                 JOptionPane.INFORMATION_MESSAGE             //if type is not present title cannot be set
         );
-    };
+    }
     public static void C01E03_SumUneven(){
         /**
-         * Napisać program sumujący liczby nieparzyste z przedziału od 1 do n,gdzie n ­ podaje użytkownik
-         * na starcie programu. Program powinienzakończyć sumowanie na liczbie n, gdy liczba n jest nieparzysta
-         * lub naliczbie n − 1, gdy liczba n jest parzysta.
+         * Napisać program sumujący liczby nieparzyste z przedziału od 1 do n,gdzie n podaje użytkownik na starcie
+         * programu. Program powinien zakończyć sumowanie na liczbie n, gdy liczba n jest nieparzysta lub na liczbie
+         * n − 1, gdy liczba n jest parzysta.
          */
-    };
+        String userNumber;
+        userNumber=JOptionPane.showInputDialog(
+                null,
+                "Input n:",
+                "Input",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+        BigInteger n= new BigInteger(userNumber);
+        BigInteger end_at;
+        BigInteger result = new BigInteger("0");
+        end_at=(n.testBit(1))?n.subtract(BigInteger.ONE):n;
+
+        for (BigInteger number= BigInteger.ONE;
+            number.compareTo(end_at)!=1;
+            number=number.add(BigInteger.TWO)
+        ){
+            result=result.add(number);
+        }
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Sum of odd numbers (1,"+n+")="+result,
+                "Result",
+                JOptionPane.INFORMATION_MESSAGE
+        );
+
+    }
     public static void C01E04_BitwiseOperators(){
         /**
          * Operatory bitowe pozwalają traktować zmienne typów całkowitoliczbowych jak
@@ -108,10 +134,10 @@ public class Main {
          *
          *
          */
-    };
+    }
 
 
     public static void main(String[] args) {
         C01_expressions_instructions_methods();
-    };
+    }
 }
