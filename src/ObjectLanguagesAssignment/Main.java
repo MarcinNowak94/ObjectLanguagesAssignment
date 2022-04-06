@@ -14,7 +14,7 @@ public class Main {
     public static void C01_expressions_instructions_methods(){
         C01E01_DialogBoxes();
         C01E02_BigFactorial();
-        C01E03_SumUneven();
+        C01E03_SumOdd();
         C01E04_BitwiseOperators();
     }
 
@@ -77,7 +77,7 @@ public class Main {
                 JOptionPane.INFORMATION_MESSAGE             //if type is not present title cannot be set
         );
     }
-    public static void C01E03_SumUneven(){
+    public static void C01E03_SumOdd(){
         /**
          * Napisać program sumujący liczby nieparzyste z przedziału od 1 do n,gdzie n podaje użytkownik na starcie
          * programu. Program powinien zakończyć sumowanie na liczbie n, gdy liczba n jest nieparzysta lub na liczbie
