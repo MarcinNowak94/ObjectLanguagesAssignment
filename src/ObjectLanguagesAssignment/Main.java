@@ -1,10 +1,15 @@
 package ObjectLanguagesAssignment;
 
+import javax.swing.JOptionPane;
+import java.awt.*;
+import java.math.BigInteger;
+import java.util.Locale;
+
 /**
- * Source:
+ * Assignments source:
  * https://www.dropbox.com/sh/w6rd2uyodkapzqg/AADhjwYfw6KSlRtO56e4Ngzta?preview=ZadaniaJava3Inz.pdf
- *
  * */
+
 public class Main {
     public static void C01_expressions_instructions_methods(){
         C01E01_DialogBoxes();
@@ -17,27 +22,60 @@ public class Main {
         /**
          * Okna dialogowe są wygodnym sposobem interakcji programu z użytkownikiem. Kilka specjalizowanych rodzajów
          * dialogów pozwala na wyświetlanie komunikatów, wprowadzanie danych czy uzyskiwanie potwierdzeń wykonywanych
-         * czynności od użytkownika. Do wyświetlania dialogów służą statyczne metody showXXXDialog z klasy
-         * JOption Panepakietu javax.swing. Jest ich dość dużo, ze względu na bogate możliwościkonfiguracji
-         * wyglądu i zachowań dialogów. Napisz program, który:
-         * 1.za pomocą okna dialogowego pobierze od użytkownika łańcuch znakowy,
-         * 2.zamieni w nim małe litery na wielkie,
-         * 3.wyświetli wynik w dialogowym oknie informacyjnym.
+         * czynności od użytkownika. Do wyświetlania dialogów służą statyczne metody showXXXDialog z klasy JOptionPane
+         * pakietu javax.swing. Jest ich dość dużo, ze względu na bogate możliwościkonfiguracji wyglądu i zachowań
+         * dialogów. Napisz program, który:
+         *  1.za pomocą okna dialogowego pobierze od użytkownika łańcuch znakowy,
+         *  2.zamieni w nim małe litery na wielkie,
+         *  3.wyświetli wynik w dialogowym oknie informacyjnym.
          *
          * Wskazówki
-         * •Do wyświetlania okna dialogowego pozwalającego na wprowadzeniedanych służy przeciążona, statyczna metoda showInputDialog()z klasy JOptionPane.
-         * •Do zamiany małych liter na wielkie służy metoda toUpperCase()z klasy String. Zwraca ona nowy obiekt (nie modyfikuje źródła)!
-         * •Do wyświetlenia okna informacyjnego służy statyczna, przeciążonametoda klasy JOptionPaneo nazwie showMessageDialog().
-         * •Spośród wielu wariantów metod przeciążonych należy wybrać teo najmniejszej liczbie parametrów. Wykorzystują one domyślnewartości dla konfigurowalnych cech dialogów (np. ikona, tytuł).
-         * •Programy korzystające z okien biblioteki Swing(w szczególności korzystające z dialogów wyświetlanych przez metody klasyJOptionPane) należy kończyć wywołując metodę System.exit(int).
+         * •Do wyświetlania okna dialogowego pozwalającego na wprowadzeniedanych służy przeciążona, statyczna metoda
+         *  showInputDialog()z klasy JOptionPane.
+         * •Do zamiany małych liter na wielkie służy metoda toUpperCase()z klasy String. Zwraca ona nowy obiekt
+         *  (nie modyfikuje źródła)!
+         * •Do wyświetlenia okna informacyjnego służy statyczna, przeciążonametoda klasy JOptionPaneo nazwie
+         *  showMessageDialog().
+         * •Spośród wielu wariantów metod przeciążonych należy wybrać teo najmniejszej liczbie parametrów. Wykorzystują
+         *  one domyślnewartości dla konfigurowalnych cech dialogów (np. ikona, tytuł).
+         * •Programy korzystające z okien biblioteki Swing(w szczególności korzystające z dialogów wyświetlanych przez
+         *  metody klasyJOptionPane) należy kończyć wywołując metodę System.exit(int).
          */
-
+        String user_text= JOptionPane.showInputDialog(
+                null,
+                "Input sample text"
+        );
+        user_text=user_text.toUpperCase();
+        JOptionPane.showMessageDialog(
+                null,
+                user_text
+        );
     }
     public static void C01E02_BigFactorial(){
         /**
-         * Korzystając z klasy BigIntegernapisać program który wyznacza silnię z podanej liczby całkowitej n
+         * Korzystając z klasy BigInteger napisać program który wyznacza silnię z podanej liczby całkowitej n
          * nawet dla dużych n(rzędu kilkuset).
          */
+        String returntext;
+        returntext =JOptionPane.showInputDialog(
+                null,
+                "Input number You want to factor"
+        );
+        BigInteger number= new BigInteger(returntext);
+        BigInteger result= BigInteger.ONE;
+
+        for (BigInteger i= BigInteger.ONE;
+             i.compareTo(number)!=1;                        //calculation has to contain i=number as well
+             i=i.add(BigInteger.ONE) ){
+            result=result.multiply(i);
+        };
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Result: "+number+"!= "+result,
+                "Whoah ;___;",
+                JOptionPane.INFORMATION_MESSAGE             //if type is not present title cannot be set
+        );
     };
     public static void C01E03_SumUneven(){
         /**
