@@ -1,9 +1,7 @@
 package ObjectLanguagesAssignment;
 
 import javax.swing.JOptionPane;
-import java.awt.*;
 import java.math.BigInteger;
-import java.util.Locale;
 
 /**
  * Assignments source:
@@ -12,9 +10,9 @@ import java.util.Locale;
 
 public class Main {
     public static void C01_expressions_instructions_methods(){
-        C01E01_DialogBoxes();
-        C01E02_BigFactorial();
-        C01E03_SumOdd();
+        //C01E01_DialogBoxes();
+        //C01E02_BigFactorial();
+        //C01E03_SumOdd();
         C01E04_BitwiseOperators();
     }
 
@@ -120,12 +118,12 @@ public class Main {
          * wypełnione 0 lub 1).Operatory bitowe stosuje się rzadko, głównie do kodowania w
          * zwartysposób binarnych informacji w postaci tzw. flag, które można badać za
          * pomocą tzw. masek (są to zmienne typów całkowitoliczbowych z określonymi bitami
-         * ustalonymina 1, a pozostałymi na 0).Chcemy mieć metody, które zmieniają liczbę na
+         * ustalonymina 1, a pozostałymi na 0). Chcemy mieć metody, które zmieniają liczbę na
          * napis ją reprezentujący w zadanym systemie liczenia (binarny, ósemkowy, szesnastkowy).
          * Aby uprościć zadanie, ograniczymy się do liczb nieujemnych. Zatem należy zaimplementować
          * trzy metody pobierające jako argument liczbę całkowitątypu inti zwracającą łańcuch znakowy
          * (obiekt klasy String) będący:
-         *  1.binarną reprezentacją argumentu,
+         *  1. binarną reprezentacją argumentu,
          *  2. ósemkową reprezentacją argumentu,
          *  3. szesnastkową reprezentacją argumentu.
          *  Wskazówki
@@ -134,6 +132,75 @@ public class Main {
          *
          *
          */
+        String input;
+        input= JOptionPane.showInputDialog(
+                null,
+                "Input number, to be interpreted as text"
+        );
+        int number= Integer.parseInt(input);
+
+        JOptionPane.showMessageDialog(
+                null,
+                ("Result: "+number+" representation in:"+
+                        "\nBinary:             "+num_to_bin(number)+
+                        "\nOctal:               "+num_to_oct(number)+
+                        "\nHexadecimal: "+num_to_hex(number))
+        );
+    }
+
+    public static String num_to_bin(int number){
+        String temp="";
+        String result="";
+
+        while (number>0){
+            temp=temp+(number%2);
+            number=number/2;
+        };
+        //now reverse string
+        for (int i=temp.length()-1; i>=0;i--){
+            result=result+temp.charAt(i);
+        }
+        return result;
+    }
+
+    public static String num_to_oct(int number){
+        String temp="";
+        String result="";
+
+        while (number>0){
+            temp=temp+(number%8);
+            number=number/8;
+        };
+        //now reverse string
+        for (int i=temp.length()-1; i>=0;i--){
+            result=result+temp.charAt(i);
+        };
+        return result;
+    }
+    public static String num_to_hex(int number){
+        String temp="";
+        String result="";
+        String digit="";
+
+        while (number>0){
+
+            switch (number%16) {
+                case 10: digit="A"; break;
+                case 11: digit="B"; break;
+                case 12: digit="C"; break;
+                case 13: digit="D"; break;
+                case 14: digit="E"; break;
+                case 15: digit="F"; break;
+                default: digit=""+(number%16); break;
+            };
+            temp=temp+digit;
+            number=number/16;
+        };
+        //now reverse string
+        for (int i=temp.length()-1; i>=0;i--){
+            result=result+temp.charAt(i);
+        };
+        return result;
     }
 
 
