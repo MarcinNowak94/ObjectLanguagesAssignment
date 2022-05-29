@@ -2,6 +2,8 @@ package ObjectLanguagesAssignment;
 
 import javax.swing.JOptionPane;
 import java.math.BigInteger;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 /**
  * Assignments source:
@@ -17,9 +19,9 @@ public class Main {
     }
     public static void C02_Classes_and_Objects(){
         C02E01_Rational();
-        C02E02_Quadratic_formula();
-        C02E03_Class_Hierarchy();
-    };
+        //C02E02_Quadratic_formula();
+        //C02E03_Class_Hierarchy();
+    }
     public static void C03_Error_handling(){
         C03E01_Catching_errors();
         C03E02_Adding_error_handling();
@@ -27,22 +29,22 @@ public class Main {
     public static void C04_Streams(){
         C04E01_Text_editor();
         C04E02_GZIP();
-    };
+    }
     public static void C05_Containers(){
         C05E01_Wspolrzedna_TreeSet();
         C05E02_Wspolrzedna_hashmap();
         C05E03_Graf_toString();
-    };
+    }
     //Noncompulsory
     public static void C06_Multithreading(){
         C06E01_Character_swap();
         C06E02_HashMap_multithreaded();
-    };
+    }
     //Noncompulsory
     public static void C07_Network_Programming(){
         C07E01_NTP_communicator();
         C07E02_Minesweeper_server();
-    };
+    }
 
     public static void C01E01_DialogBoxes(){
         /**
@@ -183,7 +185,7 @@ public class Main {
         /**
          * Zaprojektuj klasę Rational, reprezentującą liczby wymierne jako pary liczb
          * całkowitych (licznik i mianownik), wraz z podstawowymi działaniami arytmetycznymi
-         * i porównaniem. W klasie powinny znaleźć się nastę-pujące metody publiczne (oprócz konstruktora):
+         * i porównaniem. W klasie powinny znaleźć się następujące metody publiczne (oprócz konstruktora):
          * 1. dodawanie: Rational add(Rational arg);
          * 2. mnożenie: Rational mul(Rational arg);
          * 3. odejmowanie: Rational sub(Rational arg);
@@ -204,7 +206,32 @@ public class Main {
          * Metoda 7. mazwracać łańcuch znakowy opisujący ten obiekt. Na przykład może to
          * być napis postaci 1/2 lub -1/1.
          */
-    };
+        C02E01_Rational rational1 = new C02E01_Rational(2,1);
+        C02E01_Rational rational2 = new C02E01_Rational("3/7").mul(rational1);
+        C02E01_Rational rational3 = new C02E01_Rational();
+        rational3.setMy_numerator(6);
+        rational3.setMy_denominator(14);
+
+        //Check equality
+        String message = rational2.toString()+" and "+rational3.toString()+" are";
+        System.out.println(rational2.equals(rational3)==TRUE?(message+" equal"):(message+" not equal"));
+
+        message = rational1.toString()+" and "+rational3.toString()+" are";
+        System.out.println(rational1.equals(rational3)==TRUE?(message+" equal"):(message+" not equal"));
+
+        switch (rational1.compareTo(rational2)){
+            case 1: System.out.println(rational1.toString()+" is bigger than "+rational2.toString() ); break;
+            case 0: System.out.println(rational1.toString()+" is equal to "+rational2.toString() ); break;
+            case -1: System.out.println(rational1.toString()+" is lower than "+rational2.toString() ); break;
+            default: System.out.println("Comparison error"); break;
+        }
+
+        System.out.println(rational1.toString()+" + "+rational2.toString()+" = "+rational1.add(rational2) );
+        System.out.println(rational1.toString()+" - "+rational2.toString()+" = "+rational1.sub(rational2) );
+        System.out.println(rational1.toString()+" * "+rational2.toString()+" = "+rational1.mul(rational2) );
+        System.out.println(rational1.toString()+" / "+rational2.toString()+" = "+rational1.div(rational2) );
+
+    }
     public static void C02E02_Quadratic_formula(){
         /**
          * Napisz klasę opisującą równanie kwadratowe o postaci y = ax2+ bx +c. Współczynniki
@@ -304,7 +331,7 @@ public class Main {
          *      }
          *  }
          */
-    };
+    }
     public static void C03E02_Adding_error_handling(){
         /**
          * Wiadomo, że wyrażenie arytmetyczne może być reprezentowane za pomocą drzewa binarnego.
@@ -410,7 +437,7 @@ public class Main {
          * Napisz program kompresujący plik do formatu GZIP oraz program rozpakowujący plik GZIP.
          * Wskazówka •Skorzystaj z klas GZIPOutputStreamoraz GZIPInputStream.
           */
-    };
+    }
 
     public static void C05E01_Wspolrzedna_TreeSet(){
         /**
@@ -850,7 +877,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        C01_expressions_instructions_methods();
+        //C01_expressions_instructions_methods();
         C02_Classes_and_Objects();
         //C03_Error_handling();
         //C04_Streams();
