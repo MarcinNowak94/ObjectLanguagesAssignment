@@ -2,6 +2,8 @@ package ObjectLanguagesAssignment;
 
 import javax.swing.JOptionPane;
 import java.math.BigInteger;
+import java.util.Random;
+
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -18,14 +20,15 @@ public class Main {
         C01E04_BitwiseOperators();
     }
     public static void C02_Classes_and_Objects(){
-        C02E01_Rational();
-        //C02E02_Quadratic_formula();
+        //C02E01_Rational();
+        C02E02_Quadratic_formula();
         //C02E03_Class_Hierarchy();
     }
     public static void C03_Error_handling(){
         C03E01_Catching_errors();
         C03E02_Adding_error_handling();
     }
+    //Noncompulsory apparently
     public static void C04_Streams(){
         C04E01_Text_editor();
         C04E02_GZIP();
@@ -243,6 +246,31 @@ public class Main {
          * •delta: d = b2−4ac,
          * •liczba pierwiastków: p =0 : d < 0,1 : d = 0,2 : d > 0.
          */
+        //String formula="x2+x";
+        String formulas[]={"2x2+4x+7", "-200x2+47.67x+7.6","-4x2+x-1", "x2+x"};
+
+        for (String formula: formulas) {
+            Random rand= new Random();
+            Double randx= rand.nextDouble();
+            try{
+                C02E02_Quadratic_formula formula1 = new C02E02_Quadratic_formula(formula);
+                Double solution[] = new Double[2];
+                solution= formula1.solveX0();
+                System.out.print(formula+" parsed to"
+                        +"\na:\t"+formula1.getA()
+                        +"\nb:\t"+formula1.getB()
+                        +"\nc:\t"+formula1.getC()
+                        +"\nDelta equal: "+formula1.getDelta()
+                        +"\nWith x="+randx+" y="+formula1.solveY(randx)
+                        +"\nSolutions:\t"+formula1.solutions()
+                        +"\nSolution1:\t"+solution[0]+"; solution2:\t"+solution[1]
+                        +"\n\n"
+                );
+            }
+            catch (Exception ex){
+                System.out.println(ex.toString());
+            }
+        }
 
     }
     public static void C02E03_Class_Hierarchy(){
