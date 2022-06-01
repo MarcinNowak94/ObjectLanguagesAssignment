@@ -470,6 +470,11 @@ public class Main {
          *  •dzielenie przez zero,
          *  •niepoprawnie skonstruowane wyrażenie.
          */
+        Wyrazenie wyr = new Wyrazenie("(3*((1+2)-1))");
+        try {System.out.println("" + wyr.oblicz());}
+        catch (Exception except){
+            System.out.println(except);
+        };
     }
 
     public static void C04E01_Text_editor(){
