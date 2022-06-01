@@ -20,8 +20,8 @@ public class Main {
         C01E04_BitwiseOperators();
     }
     public static void C02_Classes_and_Objects(){
-        //C02E01_Rational();
-        //C02E02_Quadratic_formula();
+        C02E01_Rational();
+        C02E02_Quadratic_formula();
         C02E03_Class_Hierarchy();
     }
     public static void C03_Error_handling(){
@@ -366,6 +366,20 @@ public class Main {
          *      }
          *  }
          */
+        Kolejka k = new Kolejka();
+        try {
+            k.doKolejki(new Integer(7));
+            k.doKolejki(new String("Ala ma kota"));
+            k.doKolejki(new Double(3.14));
+            for (int i=1; i<=4; ++i)
+                System.out.println((k.zKolejki()).toString());
+        }
+        catch (Przepelnienie e) {
+            System.out.println("Przepełniona kolejka!");
+        }
+        catch (Niedomiar e) {
+            System.out.println("Pusta kolejka!");
+        }
     }
     public static void C03E02_Adding_error_handling(){
         /**
@@ -912,12 +926,25 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        //C01_expressions_instructions_methods();
-        C02_Classes_and_Objects();
-        //C03_Error_handling();
-        //C04_Streams();
-        //C05_Containers();
-        //C06_Multithreading();
-        //C07_Network_Programming();
+        Integer active_chapter=3;
+
+        switch (active_chapter) {
+            case 1: {C01_expressions_instructions_methods();}; break;
+            case 2: {C02_Classes_and_Objects();}; break;
+            case 3: {C03_Error_handling();}; break;
+            case 4: {C04_Streams();}; break;
+            case 5: {C05_Containers();}; break;
+            case 6: {C06_Multithreading();}; break;
+            case 7: {C07_Network_Programming();}; break;
+            default: {
+                C01_expressions_instructions_methods();
+                C02_Classes_and_Objects();
+                C03_Error_handling();
+                C04_Streams();
+                C05_Containers();
+                C06_Multithreading();
+                C07_Network_Programming();
+            }; break;
+        }
     }
 }
