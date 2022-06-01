@@ -21,8 +21,8 @@ public class Main {
     }
     public static void C02_Classes_and_Objects(){
         //C02E01_Rational();
-        C02E02_Quadratic_formula();
-        //C02E03_Class_Hierarchy();
+        //C02E02_Quadratic_formula();
+        C02E03_Class_Hierarchy();
     }
     public static void C03_Error_handling(){
         C03E01_Catching_errors();
@@ -299,6 +299,13 @@ public class Main {
          *
          * Wskazówka: Wielomian może być klasą abstrakcyjną lub nawet interfejsem
          */
+        Wielomian w[] = new Wielomian[3];
+              w[0] = new FunkcjaLiniowa(2, 1); // 2x + 1
+              w[1] = new FunkcjaKwadratowa(1, -2, 2); // x*x -2x + 2
+               w[2]= new FunkcjaKwadratowa(1, 0, -1); // x*x -1
+               for (int i=0; i<3; i++) {
+                   w[i].wypiszMiejscaZerowe();
+                  }
     }
 
     public static void C03E01_Catching_errors(){

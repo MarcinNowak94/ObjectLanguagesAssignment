@@ -62,12 +62,15 @@ public class C02E02_Quadratic_formula {
 
     public void setA(Double a) {
         this.a = a;
+        this.setDelta();
     }
     public void setB(Double b) {
         this.b = b;
+        this.setDelta();
     }
     public void setC(Double c) {
         this.c = c;
+        this.setDelta();
     }
     private void setDelta(){
         delta=(b*b)-(4*a*c);
@@ -111,7 +114,7 @@ public class C02E02_Quadratic_formula {
             solution[0]=null;
             solution[1]=null;
         }
-            solution[0]=((-b)-sqrt(delta))/2*a;
+        solution[0]=((-b)-sqrt(delta))/2*a;
         solution[1]=((-b)+sqrt(delta))/2*a;
         return solution;
     }
