@@ -470,8 +470,12 @@ public class Main {
          *  •dzielenie przez zero,
          *  •niepoprawnie skonstruowane wyrażenie.
          */
-        Wyrazenie wyr = new Wyrazenie("(3*((1+2)-1))");
-        try {System.out.println("" + wyr.oblicz());}
+
+        try {
+            //Wyrazenie wyr = new Wyrazenie("(3*((1+2)-1))");
+            Wyrazenie wyr = new Wyrazenie("(3*((1+2)-1))");
+            System.out.println("" + wyr.oblicz());
+        }
         catch (Exception except){
             System.out.println(except);
         };
@@ -916,7 +920,6 @@ public class Main {
     public static String num_to_base(int number, int base, String[] representation){
         String temp="";
         String result="";
-        String digit="";
 
         while (number>0){
             temp=temp+representation[number%base];
