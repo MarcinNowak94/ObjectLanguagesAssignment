@@ -5,8 +5,7 @@ import java.math.BigInteger;
 import java.util.Random;
 import java.util.*;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
+import static java.lang.Boolean.*;
 
 /**
  * Assignments source:
@@ -51,7 +50,7 @@ public class Main {
     }
 
     public static void C01E01_DialogBoxes(){
-        /**
+        /*
          * Okna dialogowe są wygodnym sposobem interakcji programu z użytkownikiem. Kilka specjalizowanych rodzajów
          * dialogów pozwala na wyświetlanie komunikatów, wprowadzanie danych czy uzyskiwanie potwierdzeń wykonywanych
          * czynności od użytkownika. Do wyświetlania dialogów służą statyczne metody showXXXDialog z klasy JOptionPane
@@ -84,7 +83,7 @@ public class Main {
         );
     }
     public static void C01E02_BigFactorial(){
-        /**
+        /*
          * Korzystając z klasy BigInteger napisać program który wyznacza silnię z podanej liczby całkowitej n
          * nawet dla dużych n(rzędu kilkuset).
          */
@@ -110,7 +109,7 @@ public class Main {
         );
     }
     public static void C01E03_SumOdd(){
-        /**
+        /*
          * Napisać program sumujący liczby nieparzyste z przedziału od 1 do n,gdzie n podaje użytkownik na starcie
          * programu. Program powinien zakończyć sumowanie na liczbie n, gdy liczba n jest nieparzysta lub na liczbie
          * n − 1, gdy liczba n jest parzysta.
@@ -143,7 +142,7 @@ public class Main {
 
     }
     public static void C01E04_BitwiseOperators(){
-        /**
+        /*
          * Operatory bitowe pozwalają traktować zmienne typów całkowitoliczbowych jak
          * zestawy bitów i wykonywać na nich operacje. Oprócz bitowych odpowiedników
          * operatorów logicznych (alternatywa, koniunkcja, negacja) dostępne są również
@@ -186,7 +185,7 @@ public class Main {
     }
 
     public static void C02E01_Rational(){
-        /**
+        /*
          * Zaprojektuj klasę Rational, reprezentującą liczby wymierne jako pary liczb
          * całkowitych (licznik i mianownik), wraz z podstawowymi działaniami arytmetycznymi
          * i porównaniem. W klasie powinny znaleźć się następujące metody publiczne (oprócz konstruktora):
@@ -237,7 +236,7 @@ public class Main {
 
     }
     public static void C02E02_Quadratic_formula(){
-        /**
+        /*
          * Napisz klasę opisującą równanie kwadratowe o postaci y = ax2+ bx +c. Współczynniki
          * a, b i c powinny być prywatne. Zdefiniuj następujące publiczne funkcje składowe:
          * •nadającą wartości współczynnikom,
@@ -248,14 +247,14 @@ public class Main {
          * •liczba pierwiastków: p =0 : d < 0,1 : d = 0,2 : d > 0.
          */
         //String formula="x2+x";
-        String formulas[]={"2x2+4x+7", "-200x2+47.67x+7.6","-4x2+x-1", "x2+x"};
+        String[] formulas={"2x2+4x+7", "-200x2+47.67x+7.6","-4x2+x-1", "x2+x"};
 
         for (String formula: formulas) {
             Random rand= new Random();
             Double randx= rand.nextDouble();
             try{
                 C02E02_Quadratic_formula formula1 = new C02E02_Quadratic_formula(formula);
-                Double solution[] = new Double[2];
+                Double[] solution = new Double[2];
                 solution= formula1.solveX0();
                 System.out.print(formula+" parsed to"
                         +"\na:\t"+formula1.getA()
@@ -275,7 +274,7 @@ public class Main {
 
     }
     public static void C02E03_Class_Hierarchy(){
-        /**
+        /*
          * Zdefiniuj poniższą hierarchię klas
          *
          *  Klasa Wielomian złożona z klas: FunkcjaLiniowa i FunkcjaKwadratowa
@@ -300,7 +299,7 @@ public class Main {
          *
          * Wskazówka: Wielomian może być klasą abstrakcyjną lub nawet interfejsem
          */
-        Wielomian w[] = new Wielomian[3];
+        Wielomian[] w = new Wielomian[3];
               w[0] = new FunkcjaLiniowa(2, 1); // 2x + 1
               w[1] = new FunkcjaKwadratowa(1, -2, 2); // x*x -2x + 2
                w[2]= new FunkcjaKwadratowa(1, 0, -1); // x*x -1
@@ -310,7 +309,7 @@ public class Main {
     }
 
     public static void C03E01_Catching_errors(){
-        /**
+        /*
          * Poniższy program:
          * class Kolejka {
          *      static final int N = 5;
@@ -369,9 +368,9 @@ public class Main {
          */
         Kolejka k = new Kolejka();
         try {
-            k.doKolejki(new Integer(7));
-            k.doKolejki(new String("Ala ma kota"));
-            k.doKolejki(new Double(3.14));
+            k.doKolejki(7);
+            k.doKolejki("Ala ma kota");
+            k.doKolejki(3.14);
             for (int i=1; i<=4; ++i)
                 System.out.println((k.zKolejki()).toString());
         }
@@ -383,7 +382,7 @@ public class Main {
         }
     }
     public static void C03E02_Adding_error_handling(){
-        /**
+        /*
          * Wiadomo, że wyrażenie arytmetyczne może być reprezentowane za pomocą drzewa binarnego.
          * Wierzchołki wewnętrzne takiego drzewa reprezentują działanie, natomiast liście reprezentują stałe.
          * Na przykład wyrażeniu(3 ∗((1 + 2) − 1)) odpowiada następujące drzewo:
@@ -478,12 +477,12 @@ public class Main {
             System.out.println("" + wyr.oblicz());
         }
         catch (Exception except){
-            System.out.println(except);
-        };
+            System.out.println(except.toString());
+        }
     }
 
     public static void C04E01_Text_editor(){
-        /**
+        /*
          * Napisz prosty edytor tekstowy, w którym będzie możliwość zapisywaniatekstu do pliku w jednym z wybranych
          * standardów kodowania znaków:UTF-8, ISO-8859-2 lub windows-1250.
          * Wskazówki:
@@ -492,7 +491,7 @@ public class Main {
          */
     }
     public static void C04E02_GZIP(){
-        /**
+        /*
          * Napisz program kompresujący plik do formatu GZIP oraz program rozpakowujący plik GZIP.
          * Wskazówka •Skorzystaj z klas GZIPOutputStreamoraz GZIPInputStream.
           */
@@ -505,7 +504,7 @@ public class Main {
         }
     }
     public static void C05E01_Wspolrzedna_TreeSet(){
-        /**
+        /*
          * Dostosuj poniższą klasę:
          * class Wspolrzedna {
          *      private int x, y;
@@ -553,7 +552,7 @@ public class Main {
         wypiszElementy(zbior);
     }
     public static void C05E02_Wspolrzedna_hashmap(){
-        /**
+        /*
          * Dostosuj klasę Wspolrzednaz poprzedniego zadania do wymagań stawianych wobec elementów dodawanych
          * do kontenera HashMap. Wówczasw wyniku wykonania programu:
          * import java.util.*;
@@ -577,7 +576,7 @@ public class Main {
          */
     }
     public static void C05E03_Graf_toString(){
-        /**
+        /*
          * W poniższej klasie Graf:
          * import java.util.*;
          * class Graf {
@@ -618,7 +617,7 @@ public class Main {
     }
 
     public static void C06E01_Character_swap(){
-        /**
+        /*
          * W poniższym programie użytkownik ma możliwość wprowadzania tekstu do okienka.
          * Działający w programie wątek zamienia we wpisywanym tekście wystąpienie znaku
          * klamry otwierającej na słowo beginoraz znakuklamry zamykającej na słowo end.
@@ -701,7 +700,7 @@ public class Main {
 
     }
     public static void C06E02_HashMap_multithreaded(){
-        /**
+        /*
          * W poniższym programie zdefiniowano klasę KolejkaKomunikatow, doktórej może
          * odwoływać się kilka wątków naraz.
          *
@@ -762,7 +761,7 @@ public class Main {
     }
 
     public static void C07E01_NTP_communicator(){
-        /**
+        /*
          * Poniższy program łączy się z podanym (jako parametr wywołania) „daytime”
          * serwerem na porcie 13, a następnie odczytuje komunikat wysyłanyprzez serwer.
          *
@@ -810,7 +809,7 @@ public class Main {
          */
     }
     public static void C07E02_Minesweeper_server(){
-        /**
+        /*
          * Rozważmy następujący program-serwer.
          *
          * import java.net.*;
@@ -948,16 +947,16 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Integer active_chapter=5;
+        int active_chapter=3;
 
         switch (active_chapter) {
-            case 1: {C01_expressions_instructions_methods();}; break;
-            case 2: {C02_Classes_and_Objects();}; break;
-            case 3: {C03_Error_handling();}; break;
-            case 4: {C04_Streams();}; break;
-            case 5: {C05_Containers();}; break;
-            case 6: {C06_Multithreading();}; break;
-            case 7: {C07_Network_Programming();}; break;
+            case 1: C01_expressions_instructions_methods(); break;
+            case 2: C02_Classes_and_Objects(); break;
+            case 3: C03_Error_handling(); break;
+            case 4: C04_Streams(); break;
+            case 5: C05_Containers(); break;
+            case 6: C06_Multithreading(); break;
+            case 7: C07_Network_Programming(); break;
             default: {
                 C01_expressions_instructions_methods();
                 C02_Classes_and_Objects();
