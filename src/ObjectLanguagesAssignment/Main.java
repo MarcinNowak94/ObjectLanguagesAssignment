@@ -35,8 +35,8 @@ public class Main {
     }
     public static void C05_Containers(){
         //C05E01_Wspolrzedna_TreeSet();
-        C05E02_Wspolrzedna_hashmap();
-        //C05E03_Graf_toString();
+        //C05E02_Wspolrzedna_hashmap();
+        C05E03_Graf_toString();
     }
     //Noncompulsory
     public static void C06_Multithreading(){
@@ -621,6 +621,8 @@ public class Main {
          *   najlepiej skorzystać z klasy StringBufferi jej metody append.
          * •Przejście do nowego wiersza realizujemy dołączając do łańcuchasekwencję sterującą "\n".
          */
+        Graf g = new Graf("4, (0,1), (1,2), (3,0), (1,3)");
+        System.out.println(g.toString());
     }
 
     public static void C06E01_Character_swap(){
