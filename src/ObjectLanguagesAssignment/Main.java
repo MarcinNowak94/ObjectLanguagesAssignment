@@ -34,9 +34,9 @@ public class Main {
         C04E02_GZIP();
     }
     public static void C05_Containers(){
-        C05E01_Wspolrzedna_TreeSet();
+        //C05E01_Wspolrzedna_TreeSet();
         C05E02_Wspolrzedna_hashmap();
-        C05E03_Graf_toString();
+        //C05E03_Graf_toString();
     }
     //Noncompulsory
     public static void C06_Multithreading(){
@@ -554,7 +554,7 @@ public class Main {
     public static void C05E02_Wspolrzedna_hashmap(){
         /*
          * Dostosuj klasę Wspolrzednaz poprzedniego zadania do wymagań stawianych wobec elementów dodawanych
-         * do kontenera HashMap. Wówczasw wyniku wykonania programu:
+         * do kontenera HashMap. Wówczas w wyniku wykonania programu:
          * import java.util.*;
          * //Tu wstaw zmodyfikowaną klasę przechowującą współrzędne punktu
          * public class Zadanie {
@@ -574,6 +574,13 @@ public class Main {
          *
          * Wskazówka•Klasa Wspolrzednapowinna przesłonić metody hashCode oraz equals.
          */
+        HashMap mapa = new HashMap();
+        mapa.put(new Wspolrzedna(2, 3), new String("czerwony"));
+        mapa.put(new Wspolrzedna(-3, 0), new String("czarny"));
+        mapa.put(new Wspolrzedna(-1, 2), new String("czerwony"));
+        mapa.put(new Wspolrzedna(2, -1), new String("czarny"));
+        Wspolrzedna w = new Wspolrzedna(-1, 2);
+        System.out.println("Punkt " + w.toString()+ " ma kolor " + mapa.get(w));
     }
     public static void C05E03_Graf_toString(){
         /*
@@ -947,7 +954,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int active_chapter=3;
+        int active_chapter=5;
 
         switch (active_chapter) {
             case 1: C01_expressions_instructions_methods(); break;
