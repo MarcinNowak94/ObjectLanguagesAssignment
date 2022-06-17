@@ -3,6 +3,7 @@ package ObjectLanguagesAssignment;
 import javax.swing.JOptionPane;
 import java.math.BigInteger;
 import java.util.Random;
+import java.util.*;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
@@ -497,6 +498,12 @@ public class Main {
           */
     }
 
+    private static void wypiszElementy(TreeSet zbior) {
+        Iterator it = zbior.iterator();
+        while (it.hasNext()) {
+            System.out.println((it.next()).toString());
+        }
+    }
     public static void C05E01_Wspolrzedna_TreeSet(){
         /**
          * Dostosuj poniższą klasę:
@@ -535,8 +542,15 @@ public class Main {
          *
          * punkty zbioru TreeSetbyły wyświetlone na ekranie w kolejności leksykograficznej
          * (czyli (−3, −2), (−3, 0), (−1, 2), (2, 3)).
-         * Wskazówka•Klasa Wspolrzednapowinna implementować interfejs Comparable
+         * Wskazówka•Klasa Wspolrzedna powinna implementować interfejs Comparable
          */
+        TreeSet zbior = new TreeSet();
+        zbior.add( new Wspolrzedna(2, 3) );
+        zbior.add( new Wspolrzedna(-3, 0) );
+        zbior.add( new Wspolrzedna(-1, 2) );
+        zbior.add( new Wspolrzedna(-1, 2) );
+        zbior.add( new Wspolrzedna(-3, -2) );
+        wypiszElementy(zbior);
     }
     public static void C05E02_Wspolrzedna_hashmap(){
         /**
@@ -934,7 +948,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Integer active_chapter=3;
+        Integer active_chapter=5;
 
         switch (active_chapter) {
             case 1: {C01_expressions_instructions_methods();}; break;
