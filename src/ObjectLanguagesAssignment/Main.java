@@ -1,13 +1,14 @@
 package ObjectLanguagesAssignment;
 
 import javax.swing.*;
-import java.io.OutputStreamWriter;
-import java.io.FileOutputStream;
-import java.io.File;
+import java.io.*;
 import java.math.BigInteger;
+import java.nio.CharBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.Random;
 import java.util.*;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 import static java.lang.Boolean.*;
 
@@ -34,7 +35,7 @@ public class Main {
     }
     //Noncompulsory apparently
     public static void C04_Streams(){
-        C04E01_Text_editor();
+        //C04E01_Text_editor();
         C04E02_GZIP();
     }
     public static void C05_Containers(){
@@ -512,14 +513,48 @@ public class Main {
                     ex);
         }
     }
-
-
-
     public static void C04E02_GZIP(){
         /*
          * Napisz program kompresujący plik do formatu GZIP oraz program rozpakowujący plik GZIP.
-         * Wskazówka •Skorzystaj z klas GZIPOutputStreamoraz GZIPInputStream.
+         * Wskazówka •Skorzystaj z klas GZIPOutputStream oraz GZIPInputStream.
           */
+        String source="D:\\Outfile.txt",
+               compressed="D:\\Compressed.gz",
+               decompressed="D:\\Decompressed.txt";
+        try {
+            FileInputStream input = new FileInputStream(source);
+            FileOutputStream output = new FileOutputStream(compressed);
+
+            GZIPOutputStream gzout = new GZIPOutputStream(output);
+
+            byte[] buffer = new byte[1024];
+            int length, offset=0;
+
+            while ((length= input.read(buffer))!=-1) {
+                gzout.write(buffer,offset,length);
+            }
+
+            gzout.close();
+            output.close();
+            input.close();
+
+            input = new FileInputStream(compressed);
+            output = new FileOutputStream(decompressed);
+
+            GZIPInputStream gzin = new GZIPInputStream(input);
+            gzout = new GZIPOutputStream(output);
+
+            while ((length=gzin.read(buffer))!=-1){
+                output.write(buffer,offset,length);
+            }
+            gzin.close();
+            input.close();
+            output.close();
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,ex);
+        }
+
     }
 
     private static void wypiszElementy(TreeSet zbior) {
