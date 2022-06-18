@@ -513,6 +513,7 @@ public class Main {
                     ex);
         }
     }
+    enum Compress {COMPRESS, DECOMPRESS};
     public static void C04E02_GZIP(){
         /*
          * Napisz program kompresujący plik do formatu GZIP oraz program rozpakowujący plik GZIP.
@@ -521,40 +522,46 @@ public class Main {
         String source="D:\\Outfile.txt",
                compressed="D:\\Compressed.gz",
                decompressed="D:\\Decompressed.txt";
-        try {
-            FileInputStream input = new FileInputStream(source);
-            FileOutputStream output = new FileOutputStream(compressed);
+        gzip(Compress.COMPRESS, source, compressed);
+        gzip(Compress.DECOMPRESS, compressed, decompressed);
+    }
 
-            GZIPOutputStream gzout = new GZIPOutputStream(output);
+    private static void gzip(Compress mode, String src, String dst){
+        try {
+            FileInputStream input = new FileInputStream(src);
+            FileOutputStream output = new FileOutputStream(dst);
 
             byte[] buffer = new byte[1024];
             int length, offset=0;
 
-            while ((length= input.read(buffer))!=-1) {
-                gzout.write(buffer,offset,length);
-            }
+            switch (mode){
+                case COMPRESS: {
+                    GZIPOutputStream gzout = new GZIPOutputStream(output);
+                    while ((length= input.read(buffer))!=-1) {
+                        gzout.write(buffer,offset,length);
+                    };
+                    gzout.close();
+                }; break;
+                case DECOMPRESS: {
+                    GZIPInputStream gzin = new GZIPInputStream(input);
+                    while ((length= gzin.read(buffer))!=-1) {
+                        output.write(buffer,offset,length);
+                    };
+                    gzin.close();
+                }; break;
+                default: JOptionPane.showMessageDialog(
+                        null,
+                        "Wrong compress type!",
+                        "Warning",JOptionPane.WARNING_MESSAGE
+                ); break;
+            };
 
-            gzout.close();
             output.close();
             input.close();
-
-            input = new FileInputStream(compressed);
-            output = new FileOutputStream(decompressed);
-
-            GZIPInputStream gzin = new GZIPInputStream(input);
-            gzout = new GZIPOutputStream(output);
-
-            while ((length=gzin.read(buffer))!=-1){
-                output.write(buffer,offset,length);
-            }
-            gzin.close();
-            input.close();
-            output.close();
         }
         catch (Exception ex) {
             JOptionPane.showMessageDialog(null,ex);
         }
-
     }
 
     private static void wypiszElementy(TreeSet zbior) {
