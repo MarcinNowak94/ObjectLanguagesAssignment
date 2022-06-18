@@ -1,7 +1,11 @@
 package ObjectLanguagesAssignment;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.io.OutputStreamWriter;
+import java.io.FileOutputStream;
+import java.io.File;
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.Random;
 import java.util.*;
 
@@ -34,8 +38,8 @@ public class Main {
         C04E02_GZIP();
     }
     public static void C05_Containers(){
-        //C05E01_Wspolrzedna_TreeSet();
-        //C05E02_Wspolrzedna_hashmap();
+        C05E01_Wspolrzedna_TreeSet();
+        C05E02_Wspolrzedna_hashmap();
         C05E03_Graf_toString();
     }
     //Noncompulsory
@@ -246,7 +250,6 @@ public class Main {
          * •delta: d = b2−4ac,
          * •liczba pierwiastków: p =0 : d < 0,1 : d = 0,2 : d > 0.
          */
-        //String formula="x2+x";
         String[] formulas={"2x2+4x+7", "-200x2+47.67x+7.6","-4x2+x-1", "x2+x"};
 
         for (String formula: formulas) {
@@ -481,15 +484,37 @@ public class Main {
         }
     }
 
+
     public static void C04E01_Text_editor(){
         /*
-         * Napisz prosty edytor tekstowy, w którym będzie możliwość zapisywaniatekstu do pliku w jednym z wybranych
-         * standardów kodowania znaków:UTF-8, ISO-8859-2 lub windows-1250.
+         * Napisz prosty edytor tekstowy, w którym będzie możliwość zapisywania tekstu do pliku w jednym z wybranych
+         * standardów kodowania znaków: UTF-8, ISO-8859-2 lub windows-1250.
          * Wskazówki:
          *  •Skorzystaj z klas OutputStreamWriter oraz FileOutputStream.
          *  •Łańcuchami reprezentującymi wymienione standardy kodowaniaznaków są: UTF8, ISO8859 2 oraz Cp1250.
          */
+        String filename="D:\\Outfile.txt";
+
+        try {
+            File file = new File(filename);
+            FileOutputStream outfile = new FileOutputStream(filename);
+            OutputStreamWriter writer = new OutputStreamWriter(outfile, StandardCharsets.UTF_8);
+
+            writer.write( JOptionPane.showInputDialog(
+                    null,
+                    "Input text to add to "+filename
+            ) );
+            writer.close();
+        }
+        catch (Exception ex) {
+            JOptionPane.showMessageDialog(
+                    null,
+                    ex);
+        }
     }
+
+
+
     public static void C04E02_GZIP(){
         /*
          * Napisz program kompresujący plik do formatu GZIP oraz program rozpakowujący plik GZIP.
@@ -956,7 +981,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int active_chapter=5;
+        int active_chapter=4;
 
         switch (active_chapter) {
             case 1: C01_expressions_instructions_methods(); break;
